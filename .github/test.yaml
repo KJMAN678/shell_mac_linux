@@ -1,0 +1,20 @@
+name: Action Sample
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  numpy-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - name: Permit Shell Script
+        run: chmod u+x ./test.sh
+      - name: Run Shell Script
+        run: ./test.sh
